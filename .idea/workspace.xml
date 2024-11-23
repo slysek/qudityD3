@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="Matrix F on quantum circuit using cartan decomposition">
-      <change afterPath="$PROJECT_DIR$/cz_decomposition.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/qudityD3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qudityD3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cartan_decomposition.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/cartan_decomposition.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dekompozycjaKartana.nb" beforeDir="false" afterPath="$PROJECT_DIR$/dekompozycjaKartana.nb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matrixF.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/matrixF.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
