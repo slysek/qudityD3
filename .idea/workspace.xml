@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="GHZ state with partial trace verification">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="generation of qutrit graph state and final version of ghz state">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GHZstate.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/GHZstate.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qutritGraphState.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/qutritGraphState.ipynb" afterDir="false" />
@@ -69,6 +68,8 @@
     <MESSAGE value="Trying to add new method to find basis" />
     <MESSAGE value="CZ algo" />
     <MESSAGE value="GHZ state with partial trace verification" />
-    <option name="LAST_COMMIT_MESSAGE" value="GHZ state with partial trace verification" />
+    <MESSAGE value="Final version of ghz state" />
+    <MESSAGE value="generation of qutrit graph state and final version of ghz state" />
+    <option name="LAST_COMMIT_MESSAGE" value="generation of qutrit graph state and final version of ghz state" />
   </component>
 </project>
