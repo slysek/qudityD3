@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="generation of qutrit graph state and final version of ghz state">
+    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="comparison of ideal GHZ state with states created on the ibm brisbane and torino fakebackends">
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ghz_creator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/pyproject.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chshQutrit.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/qudityD3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qudityD3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GHZstate.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/GHZstate.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qutritGraphState.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/qutritGraphState.ipynb" afterDir="false" />
@@ -17,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Python Script" />
         <option value="Jupyter Notebook" />
       </list>
     </option>
@@ -49,10 +57,19 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/szymon/DataspellProjects/qudityD3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\szymon\DataspellProjects\qudityD3\QuditsOnQubits" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\szymon\DataspellProjects\qudityD3" />
+      <recent name="C:\Users\szymon\DataspellProjects\qudityD3\QuditsOnQubits\QuditsOnQubits" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -70,6 +87,7 @@
     <MESSAGE value="GHZ state with partial trace verification" />
     <MESSAGE value="Final version of ghz state" />
     <MESSAGE value="generation of qutrit graph state and final version of ghz state" />
-    <option name="LAST_COMMIT_MESSAGE" value="generation of qutrit graph state and final version of ghz state" />
+    <MESSAGE value="comparison of ideal GHZ state with states created on the ibm brisbane and torino fakebackends" />
+    <option name="LAST_COMMIT_MESSAGE" value="comparison of ideal GHZ state with states created on the ibm brisbane and torino fakebackends" />
   </component>
 </project>

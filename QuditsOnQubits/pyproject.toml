@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "QuditsOnQubits"
+version = "0.0.1"
+description = "Testt  tt"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    { name="Szymon", email="test@test.test"}
+]
+keywords = ["quantum", "ghz", "qiskit"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "qiskit",
+    "matplotlib",
+
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = "https://github.com/twoj/projekt"
