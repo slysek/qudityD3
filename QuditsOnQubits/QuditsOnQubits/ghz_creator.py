@@ -163,6 +163,9 @@ def create_basic_ghz():
     optiGHZ.measure_all()
 
     #%%
+
+    ghz_circ = optiGHZ.copy()
+    ghz_circ.remove_final_measurements()
     cartanH = Operator(cartanCirc).conjugate().transpose()
     changeToDefault = cartanH.tensor(cartanH).tensor(Operator(np.identity(4))).to_matrix()
     optiGhzState = Statevector(ghz_circ)
@@ -170,7 +173,7 @@ def create_basic_ghz():
 
     default = np.dot(changeToDefault, optiGhzMatrix)
 
-    return optiGHZ, default
+    return [optiGHZ, default]
 
 def create_graph_ghz(graph):
     def cartanCircuit(VCxGate, transGate):

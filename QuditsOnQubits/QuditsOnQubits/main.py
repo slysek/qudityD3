@@ -26,7 +26,7 @@ class QuditsOnQubits:
         self.backend = None
         self.transpiled = None
         self.name = None
-        tempCirc = self.circuit.copy()
+        tempCirc = self.circuit[0].copy()
         tempCirc.remove_final_measurements()
         self.statBasic = Statevector.from_instruction(tempCirc).probabilities_dict()
 
