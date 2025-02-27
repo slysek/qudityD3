@@ -25,48 +25,69 @@ class QuditsOnQubits:
 
         self.backend = None
         self.transpiled = None
-        self.statBasic = None
+        self.name = None
+        tempCirc = self.circuit.copy()
+        tempCirc.remove_final_measurements()
+        self.statBasic = Statevector.from_instruction(tempCirc).probabilities_dict()
+
         self.statTorino = None
         self.statBrisbane = None
-        self.name = None
+
     def brisbane(self):
-        backendBrisbane = FakeBrisbane()
-        self.backend = backendBrisbane
+        backend_brisbane = FakeBrisbane()
+        self.backend = backend_brisbane
         self.name = "Brisbane"
-        targetBrisbane = backendBrisbane.target
 
-        pass_managerBrisbane = generate_preset_pass_manager(
-            optimization_level=3, target=targetBrisbane
+
+        target_brisbane = backend_brisbane.target
+        pass_manager_brisbane = generate_preset_pass_manager(
+            optimization_level=3, target=target_brisbane
         )
+        transpiled_brisbane = pass_manager_brisbane.run(self.circuit)
+        self.transpiled = transpiled_brisbane
 
-        transpiledBrisbane = pass_managerBrisbane.run(self.circuit)
 
-        self.transpiled = transpiledBrisbane
+        aer = AerSimulator.from_backend(backend_brisbane)
+        sampler = SamplerV2(aer)
+        job = sampler.run([transpiled_brisbane])
+        pub_result = job.result()[0]
+        counts = pub_result.data.meas.get_counts()
 
-        return transpiledBrisbane
+
+        self.statBrisbane = counts
+
+        return transpiled_brisbane
 
 
     def torino(self):
 
-        backendTorino = FakeTorino()
-        self.backend = backendTorino
+        backend_torino = FakeTorino()
+        self.backend = backend_torino
         self.name = "Torino"
 
-        targetTorino = backendTorino.target
-
-        pass_managerTorino = generate_preset_pass_manager(
-            optimization_level=3, target=targetTorino
+        target_torino = backend_torino.target
+        pass_manager_torino = generate_preset_pass_manager(
+            optimization_level=3, target=target_torino
         )
+        transpiled_torino = pass_manager_torino.run(self.circuit)
+        self.transpiled = transpiled_torino
 
-        transpiledTorino = pass_managerTorino.run(self.circuit)
 
-        self.transpiled = transpiledTorino
+        aer = AerSimulator.from_backend(backend_torino)
+        sampler = SamplerV2(aer)
+        job = sampler.run([transpiled_torino])
+        pub_result = job.result()[0]
+        counts = pub_result.data.meas.get_counts()
 
-        return transpiledTorino
+        self.statTorino = counts
+
+        return transpiled_torino
 
     def distrb(self):
         if self.backend is None:
-            d = Statevector.from_instruction(self.circuit).probabilities_dict()
+            circ_temp = self.circuit.copy()
+            circ_temp.remove_final_measurements()
+            d = Statevector.from_instruction(circ_temp).probabilities_dict()
             self.statBasic = d
             plot_histogram(d, figsize=(30,10))
         else:
@@ -79,11 +100,19 @@ class QuditsOnQubits:
                 self.statBrisbane = counts
             elif self.name == "Torino":
                 self.statTorino = counts
-            plot_histogram(counts, figsize=(30, 10)).show()
+            plot_histogram(counts, figsize=(30, 10))
     def fidelity(self, backend_name):
         if backend_name == "Brisbane":
+            if self.statBrisbane is None:
+                raise ValueError("First use .brisbane() to count fidelity.")
             fid = hellinger_fidelity(self.statBasic, self.statBrisbane)
+
         elif backend_name == "Torino":
+            if self.statTorino is None:
+                raise ValueError("First use .torino() to count fidelity.")
             fid = hellinger_fidelity(self.statBasic, self.statTorino)
+
+        else:
+            raise ValueError("Unknown backend. Use \"Brisbane\" or \"Torino\".")
 
         return fid

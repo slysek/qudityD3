@@ -151,6 +151,7 @@ def create_basic_ghz():
     ghzMatrix = ghzState.data.reshape((64,1))
     testWeyly = TwoQubitWeylDecomposition(Operator(cartanCirc).to_matrix())
     optiF = testWeyly.circuit()
+    optiF.name = "+"
 
     #Optimizing ghz circuit
     optiGHZ = QuantumCircuit(6)
@@ -224,6 +225,7 @@ def create_graph_ghz(graph):
 
         testWeyly = TwoQubitWeylDecomposition(Operator(circ).to_matrix())
         optiF = testWeyly.circuit()
+        optiF.name = "+"
 
         return optiF
 
@@ -290,35 +292,35 @@ def create_graph_ghz(graph):
 
         return circ
 
-    def createGraphCirc(G, transGate):
-        vertexList = []
+    def createGraphCirc(G, transGate, multi=False):
 
         n = G.number_of_nodes()
-        for g in G.nodes():
-            vertexList.append(list(G[g]))
-
-        qubitList = [[i, i + 1] for i in range(0, 2 * n, 2)]
+        qubitList = [[2*i, 2*i+1] for i in range(n)]
         test = []
-
-        print(vertexList)
-
-        for i in range(len(vertexList)):
-            for j in vertexList[i]:
-                if sorted([qubitList[i][0], qubitList[i][1], qubitList[j][0], qubitList[j][1]]) not in test:
-                    test.append([qubitList[i][0], qubitList[i][1], qubitList[j][0], qubitList[j][1]])
-
-        graphCirc = QuantumCircuit(2 * n)
-
+        if multi and hasattr(G, "is_multigraph") and G.is_multigraph():
+            for u, v, k in G.edges(keys=True):
+                if u != v:
+                    test.append([
+                        qubitList[u][0],
+                        qubitList[u][1],
+                        qubitList[v][0],
+                        qubitList[v][1]
+                    ])
+        else:
+            for u, v in G.edges():
+                if u != v:
+                    test.append([
+                        qubitList[u][0],
+                        qubitList[u][1],
+                        qubitList[v][0],
+                        qubitList[v][1]
+                    ])
+        graphCirc = QuantumCircuit(2*n)
         cartanCirc = cartanCircuit(VCxGate, transGate)
-
-        for k in qubitList:
-            graphCirc.append(cartanCirc, k)
-
-        print(test)
-
-        for i in test:
-            graphCirc.append(CZqutrit(transGate), i)
-
+        for pair in qubitList:
+            graphCirc.append(cartanCirc, pair)
+        for edge in test:
+            graphCirc.append(CZqutrit(transGate), edge)
         return graphCirc
 
     basisTransformationMatrix = np.identity(2)
