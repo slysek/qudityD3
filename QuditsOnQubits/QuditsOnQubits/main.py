@@ -19,16 +19,14 @@ class QuditsOnQubits:
     def __init__(self, graph=None):
         if graph is None:
             self.circuit = create_basic_ghz()
-
+            self.statBasic = Statevector.from_instruction(self.circuit[0]).probabilities_dict()
         else:
             self.circuit = create_graph_ghz(graph)
+            self.statBasic = Statevector.from_instruction(self.circuit).probabilities_dict()
 
         self.backend = None
         self.transpiled = None
         self.name = None
-        tempCirc = self.circuit[0].copy()
-        tempCirc.remove_final_measurements()
-        self.statBasic = Statevector.from_instruction(tempCirc).probabilities_dict()
 
         self.statTorino = None
         self.statBrisbane = None
@@ -43,7 +41,10 @@ class QuditsOnQubits:
         pass_manager_brisbane = generate_preset_pass_manager(
             optimization_level=3, target=target_brisbane
         )
-        transpiled_brisbane = pass_manager_brisbane.run(self.circuit)
+
+        tempCirc = self.circuit[0].copy()
+        tempCirc.measure_all()
+        transpiled_brisbane = pass_manager_brisbane.run(tempCirc)
         self.transpiled = transpiled_brisbane
 
 
@@ -69,7 +70,9 @@ class QuditsOnQubits:
         pass_manager_torino = generate_preset_pass_manager(
             optimization_level=3, target=target_torino
         )
-        transpiled_torino = pass_manager_torino.run(self.circuit)
+        tempCirc = self.circuit[0].copy()
+        tempCirc.measure_all()
+        transpiled_torino = pass_manager_torino.run(tempCirc)
         self.transpiled = transpiled_torino
 
 
@@ -101,6 +104,7 @@ class QuditsOnQubits:
             elif self.name == "Torino":
                 self.statTorino = counts
             plot_histogram(counts, figsize=(30, 10))
+
     def fidelity(self, backend_name):
         if backend_name == "Brisbane":
             if self.statBrisbane is None:

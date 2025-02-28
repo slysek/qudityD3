@@ -160,7 +160,6 @@ def create_basic_ghz():
     optiGHZ.append(optiF, [4, 5])
     optiGHZ.append(czqutrit, [0, 1, 2, 3])
     optiGHZ.append(czqutrit, [0, 1, 4, 5])
-    optiGHZ.measure_all()
 
     #%%
 
