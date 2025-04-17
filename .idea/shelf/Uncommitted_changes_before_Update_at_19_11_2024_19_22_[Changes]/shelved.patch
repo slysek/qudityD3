@@ -1,0 +1,766 @@
+Index: cartan_decomposition.ipynb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n \"cells\": [\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"id\": \"initial_id\",\r\n   \"metadata\": {\r\n    \"collapsed\": true,\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T11:37:40.146589Z\",\r\n     \"start_time\": \"2024-11-19T11:37:39.893786Z\"\r\n    }\r\n   },\r\n   \"source\": [\r\n    \"import numpy as np\\n\",\r\n    \"from sympy.strategies.branch import identity\"\r\n   ],\r\n   \"outputs\": [],\r\n   \"execution_count\": 1\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T11:38:27.158842Z\",\r\n     \"start_time\": \"2024-11-19T11:38:27.142044Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": [\r\n    \"zero_qubit = np.array([[1],[0]])\\n\",\r\n    \"one_qubit = np.array([[0],[1]])\"\r\n   ],\r\n   \"id\": \"e1e26966409093fb\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 2\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T11:54:19.974513Z\",\r\n     \"start_time\": \"2024-11-19T11:54:19.959418Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": [\r\n    \"qubity = [zero_qubit, one_qubit]\\n\",\r\n    \"\\n\",\r\n    \"baza = [np.kron(qubity[0], qubity[0]), np.kron(qubity[0], qubity[1]), np.kron(qubity[1], qubity[0])]\"\r\n   ],\r\n   \"id\": \"afd2e9cc1d093d7a\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 29\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T14:35:45.422842Z\",\r\n     \"start_time\": \"2024-11-19T14:35:45.392660Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"baza[0]\",\r\n   \"id\": \"9912298df2bc0455\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"array([[1],\\n\",\r\n       \"       [0],\\n\",\r\n       \"       [0],\\n\",\r\n       \"       [0]])\"\r\n      ]\r\n     },\r\n     \"execution_count\": 145,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 145\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T13:40:43.450314Z\",\r\n     \"start_time\": \"2024-11-19T13:40:43.434628Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"np.kron(np.kron(baza[0], baza[1]), baza[2]).shape\",\r\n   \"id\": \"901b883ad7eb2733\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"(64, 1)\"\r\n      ]\r\n     },\r\n     \"execution_count\": 108,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 108\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T11:57:30.007547Z\",\r\n     \"start_time\": \"2024-11-19T11:57:29.991628Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": [\r\n    \"stan0x0 = np.kron(baza[0], baza[0].conj().T)\\n\",\r\n    \"stan1x1 = np.kron(baza[1], baza[1].conj().T)\\n\",\r\n    \"stan2x2 = np.kron(baza[2], baza[2].conj().T)\"\r\n   ],\r\n   \"id\": \"22d20f16c9f5539b\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 36\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T11:58:16.929471Z\",\r\n     \"start_time\": \"2024-11-19T11:58:16.924311Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"stan2x2\",\r\n   \"id\": \"20ae2cf7367b909c\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"array([[0, 0, 0, 0],\\n\",\r\n       \"       [0, 0, 0, 0],\\n\",\r\n       \"       [0, 0, 1, 0],\\n\",\r\n       \"       [0, 0, 0, 0]])\"\r\n      ]\r\n     },\r\n     \"execution_count\": 39,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 39\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:03:25.135209Z\",\r\n     \"start_time\": \"2024-11-19T12:03:25.119240Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": [\r\n    \"import qiskit.circuit.library as lib\\n\",\r\n    \"from qiskit.quantum_info import Operator\"\r\n   ],\r\n   \"id\": \"a484591c5f6aada4\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 42\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:09:38.386600Z\",\r\n     \"start_time\": \"2024-11-19T12:09:38.375355Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": [\r\n    \"Z = Operator(lib.ZGate())\\n\",\r\n    \"X = Operator(lib.XGate())\\n\",\r\n    \"\\n\",\r\n    \"def Ry(theta):\\n\",\r\n    \"    return Operator(lib.RYGate(theta))\\n\",\r\n    \"\\n\",\r\n    \"def P(theta):\\n\",\r\n    \"    return Operator(lib.PhaseGate(theta))\"\r\n   ],\r\n   \"id\": \"19626e09a12fc18d\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 53\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:11:31.596716Z\",\r\n     \"start_time\": \"2024-11-19T12:11:31.582839Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": [\r\n    \"from numpy.linalg import multi_dot\\n\",\r\n    \"\\n\",\r\n    \"u1 = multi_dot([X, Ry(np.arctan(1 + np.sqrt(3))), Z, P(np.pi * 3 / 16), X, P(np.pi * 15 / 16)])\\n\",\r\n    \"u2 = u1\\n\",\r\n    \"v1 = multi_dot([X, P(np.pi * 3 / 16), X, P(np.pi * 15 / 16), X, Ry(np.arctan(1 + np.sqrt(3))), Z, X])\\n\",\r\n    \"v2 = multi_dot([X, Z, X, P(np.pi * 9 / 16), X, P(np.pi * 13 / 16), X, Z, Ry(np.arctan(1 + np.sqrt(3)))])\"\r\n   ],\r\n   \"id\": \"1884bf2a2201e2b1\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 56\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:13:17.486565Z\",\r\n     \"start_time\": \"2024-11-19T12:13:17.455241Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": [\r\n    \"pi = np.pi\\n\",\r\n    \"sqrt = np.sqrt\\n\",\r\n    \"log = np.log\\n\",\r\n    \"\\n\",\r\n    \"common_log_term = log(-1 / 6 * (-1) ** (1 / 4) * (sqrt(24 - 6 * sqrt(3)) + 1j * (3 + sqrt(3))))\\n\",\r\n    \"common_factor = 3j + 1j * sqrt(3) + sqrt(6 * (4 - sqrt(3)))\\n\",\r\n    \"denominator = 15 * pi - 4 * 1j * common_log_term\\n\",\r\n    \"\\n\",\r\n    \"VCx = np.array([\\n\",\r\n    \"    [\\n\",\r\n    \"        -(((-1) ** (5 / 8) * common_factor * (30 * pi - 8 * 1j * common_log_term)) / (24 * denominator)) +\\n\",\r\n    \"        (3 * (-1) ** (5 / 8) * (-30 * pi + 8 * 1j * common_log_term)) / (2 * common_factor * denominator),\\n\",\r\n    \"        0,\\n\",\r\n    \"        0,\\n\",\r\n    \"        (3 * (-1) ** (5 / 8) * (-30 * pi + 8 * 1j * common_log_term)) / (2 * common_factor * denominator) -\\n\",\r\n    \"        ((-1) ** (5 / 8) * common_factor * (-30 * pi + 8 * 1j * common_log_term)) / (24 * denominator)\\n\",\r\n    \"    ],\\n\",\r\n    \"    [\\n\",\r\n    \"        0,\\n\",\r\n    \"        -(1 / 2) * (-1) ** (1 / 8) - (1 / 2) * (-1) ** (5 / 8),\\n\",\r\n    \"        -(1 / 2) * (-1) ** (1 / 8) + (1 / 2) * (-1) ** (5 / 8),\\n\",\r\n    \"        0\\n\",\r\n    \"    ],\\n\",\r\n    \"    [\\n\",\r\n    \"        0,\\n\",\r\n    \"        -(1 / 2) * (-1) ** (1 / 8) + (1 / 2) * (-1) ** (5 / 8),\\n\",\r\n    \"        -(1 / 2) * (-1) ** (1 / 8) - (1 / 2) * (-1) ** (5 / 8),\\n\",\r\n    \"        0\\n\",\r\n    \"    ],\\n\",\r\n    \"    [\\n\",\r\n    \"        (3 * (-1) ** (5 / 8) * (-30 * pi + 8 * 1j * common_log_term)) / (2 * common_factor * denominator) -\\n\",\r\n    \"        ((-1) ** (5 / 8) * common_factor * (-30 * pi + 8 * 1j * common_log_term)) / (24 * denominator),\\n\",\r\n    \"        0,\\n\",\r\n    \"        0,\\n\",\r\n    \"        -(((-1) ** (5 / 8) * common_factor * (30 * pi - 8 * 1j * common_log_term)) / (24 * denominator)) +\\n\",\r\n    \"        (3 * (-1) ** (5 / 8) * (-30 * pi + 8 * 1j * common_log_term)) / (2 * common_factor * denominator)\\n\",\r\n    \"    ]\\n\",\r\n    \"], dtype=complex)\"\r\n   ],\r\n   \"id\": \"61373f65053a299b\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 57\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:15:50.308830Z\",\r\n     \"start_time\": \"2024-11-19T12:15:50.288353Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"fCheck = multi_dot([np.kron(u1, u2), VCx, np.kron(v1, v2)]).round(5)\",\r\n   \"id\": \"74b76a1e7d9a75ad\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 62\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:15:53.023945Z\",\r\n     \"start_time\": \"2024-11-19T12:15:52.992410Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"fCheck \",\r\n   \"id\": \"c185cc3e4982c1b5\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"array([[ 0.57735-0.j ,  0.57735-0.j ,  0.57735-0.j , -0.     -0.j ],\\n\",\r\n       \"       [ 0.57735-0.j , -0.28868+0.5j, -0.28868-0.5j,  0.     -0.j ],\\n\",\r\n       \"       [ 0.57735-0.j , -0.28868-0.5j, -0.28868+0.5j,  0.     -0.j ],\\n\",\r\n       \"       [-0.     -0.j ,  0.     -0.j ,  0.     -0.j ,  1.     -0.j ]])\"\r\n      ]\r\n     },\r\n     \"execution_count\": 63,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 63\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:24:54.452280Z\",\r\n     \"start_time\": \"2024-11-19T12:24:54.436634Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"stanPlusQubity = multi_dot([fCheck, baza[0]])\",\r\n   \"id\": \"be90502f8a7bbbf8\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 69\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:43:50.103930Z\",\r\n     \"start_time\": \"2024-11-19T12:43:50.089114Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"(stanPlusQubity * np.sqrt(3)).round(3)\",\r\n   \"id\": \"4508d999c60fb789\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"array([[1.+0.j],\\n\",\r\n       \"       [1.+0.j],\\n\",\r\n       \"       [1.+0.j],\\n\",\r\n       \"       [0.+0.j]])\"\r\n      ]\r\n     },\r\n     \"execution_count\": 76,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 76\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:25:14.561053Z\",\r\n     \"start_time\": \"2024-11-19T12:25:14.545222Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"stanPlusQudity = np.kron(stanPlusQubity, np.kron(stanPlusQubity, stanPlusQubity))\",\r\n   \"id\": \"9d9e14292f3984b8\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 72\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T12:25:19.158433Z\",\r\n     \"start_time\": \"2024-11-19T12:25:19.134783Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"stanPlusQudity\",\r\n   \"id\": \"c9822e460329aa7d\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"array([[0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.19244982+0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j],\\n\",\r\n       \"       [0.        +0.j]])\"\r\n      ]\r\n     },\r\n     \"execution_count\": 73,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 73\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T13:23:16.738694Z\",\r\n     \"start_time\": \"2024-11-19T13:23:16.722772Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"Cz01 = np.kron(stan0x0, fCheck) + np.kron(stan1x1, multi_dot([fCheck, fCheck])) + np.kron(stan2x2, np.identity(4))\",\r\n   \"id\": \"52a560d6ac967d3d\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 88\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T13:23:17.276169Z\",\r\n     \"start_time\": \"2024-11-19T13:23:17.260194Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"CZ01 = np.kron(Cz01, np.identity(4))\",\r\n   \"id\": \"c66e84e114740b0c\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 89\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T13:23:17.819079Z\",\r\n     \"start_time\": \"2024-11-19T13:23:17.803347Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"CZ01\",\r\n   \"id\": \"43f9a133f029d657\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"array([[0.57735+0.j, 0.     +0.j, 0.     +0.j, ..., 0.     +0.j,\\n\",\r\n       \"        0.     +0.j, 0.     +0.j],\\n\",\r\n       \"       [0.     +0.j, 0.57735+0.j, 0.     +0.j, ..., 0.     +0.j,\\n\",\r\n       \"        0.     +0.j, 0.     +0.j],\\n\",\r\n       \"       [0.     +0.j, 0.     +0.j, 0.57735+0.j, ..., 0.     +0.j,\\n\",\r\n       \"        0.     +0.j, 0.     +0.j],\\n\",\r\n       \"       ...,\\n\",\r\n       \"       [0.     +0.j, 0.     +0.j, 0.     +0.j, ..., 0.     +0.j,\\n\",\r\n       \"        0.     +0.j, 0.     +0.j],\\n\",\r\n       \"       [0.     +0.j, 0.     +0.j, 0.     +0.j, ..., 0.     +0.j,\\n\",\r\n       \"        0.     +0.j, 0.     +0.j],\\n\",\r\n       \"       [0.     +0.j, 0.     +0.j, 0.     +0.j, ..., 0.     +0.j,\\n\",\r\n       \"        0.     +0.j, 0.     +0.j]])\"\r\n      ]\r\n     },\r\n     \"execution_count\": 90,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 90\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T13:23:23.665833Z\",\r\n     \"start_time\": \"2024-11-19T13:23:23.658238Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"Cz02 = np.kron(np.kron(stan0x0, np.identity(4)), fCheck) + np.kron(np.kron(stan1x1, np.identity(4)), np.identity(4)) + np.kron(np.kron(stan2x2, np.identity(4)), multi_dot([fCheck, fCheck]))\",\r\n   \"id\": \"8175ea294c4a040c\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 91\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T13:23:23.993233Z\",\r\n     \"start_time\": \"2024-11-19T13:23:23.961714Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"Cz02\",\r\n   \"id\": \"82cf6d16317575ce\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"array([[ 0.57735+0.j ,  0.57735+0.j ,  0.57735+0.j , ...,  0.     +0.j ,\\n\",\r\n       \"         0.     +0.j ,  0.     +0.j ],\\n\",\r\n       \"       [ 0.57735+0.j , -0.28868+0.5j, -0.28868-0.5j, ...,  0.     +0.j ,\\n\",\r\n       \"         0.     +0.j ,  0.     +0.j ],\\n\",\r\n       \"       [ 0.57735+0.j , -0.28868-0.5j, -0.28868+0.5j, ...,  0.     +0.j ,\\n\",\r\n       \"         0.     +0.j ,  0.     +0.j ],\\n\",\r\n       \"       ...,\\n\",\r\n       \"       [ 0.     +0.j ,  0.     +0.j ,  0.     +0.j , ...,  0.     +0.j ,\\n\",\r\n       \"         0.     +0.j ,  0.     +0.j ],\\n\",\r\n       \"       [ 0.     +0.j ,  0.     +0.j ,  0.     +0.j , ...,  0.     +0.j ,\\n\",\r\n       \"         0.     +0.j ,  0.     +0.j ],\\n\",\r\n       \"       [ 0.     +0.j ,  0.     +0.j ,  0.     +0.j , ...,  0.     +0.j ,\\n\",\r\n       \"         0.     +0.j ,  0.     +0.j ]])\"\r\n      ]\r\n     },\r\n     \"execution_count\": 92,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 92\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T13:23:55.021447Z\",\r\n     \"start_time\": \"2024-11-19T13:23:55.001815Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"Cz12 = np.kron(np.identity(4), np.kron(stan0x0, np.identity(4)) + np.kron(stan1x1, fCheck) + np.kron(stan2x2, multi_dot([fCheck, fCheck])))\",\r\n   \"id\": \"aeff0132288b4407\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 93\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T13:23:58.159477Z\",\r\n     \"start_time\": \"2024-11-19T13:23:58.143968Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"Cz12 \",\r\n   \"id\": \"e07e1d5c8d87199b\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"array([[1.+0.j, 0.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\\n\",\r\n       \"       [0.+0.j, 1.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\\n\",\r\n       \"       [0.+0.j, 0.+0.j, 1.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\\n\",\r\n       \"       ...,\\n\",\r\n       \"       [0.+0.j, 0.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\\n\",\r\n       \"       [0.+0.j, 0.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\\n\",\r\n       \"       [0.+0.j, 0.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j]])\"\r\n      ]\r\n     },\r\n     \"execution_count\": 94,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 94\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T13:25:25.207511Z\",\r\n     \"start_time\": \"2024-11-19T13:25:25.176720Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"GHZ = multi_dot([CZ01, Cz02, Cz12, stanPlusQudity])\",\r\n   \"id\": \"9879a714ab96e58a\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 96\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T14:49:45.078920Z\",\r\n     \"start_time\": \"2024-11-19T14:49:45.058468Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"wspolczynnik_zmiany_bazy = np.kron(np.identity(4), np.kron(fCheck.conj().T, fCheck.conj().T))\",\r\n   \"id\": \"9f4b86e13189ac8a\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 149\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T14:49:45.836870Z\",\r\n     \"start_time\": \"2024-11-19T14:49:45.827852Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"wspolczynnik_zmiany_bazy.shape\",\r\n   \"id\": \"9eff9af9b9e57a8e\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"(64, 64)\"\r\n      ]\r\n     },\r\n     \"execution_count\": 150,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 150\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T14:49:46.862503Z\",\r\n     \"start_time\": \"2024-11-19T14:49:46.838713Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"GHZqubity = multi_dot([wspolczynnik_zmiany_bazy, GHZ])\",\r\n   \"id\": \"1f0131be7c9b4b0a\",\r\n   \"outputs\": [],\r\n   \"execution_count\": 151\r\n  },\r\n  {\r\n   \"metadata\": {\r\n    \"ExecuteTime\": {\r\n     \"end_time\": \"2024-11-19T15:38:14.002322Z\",\r\n     \"start_time\": \"2024-11-19T15:38:13.987315Z\"\r\n    }\r\n   },\r\n   \"cell_type\": \"code\",\r\n   \"source\": \"GHZqubity.round(3)\",\r\n   \"id\": \"559139d31caeb5ae\",\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"array([[ 0.192+0.j   ],\\n\",\r\n       \"       [ 0.192+0.j   ],\\n\",\r\n       \"       [ 0.192+0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.333+0.j   ],\\n\",\r\n       \"       [-0.   +0.j   ],\\n\",\r\n       \"       [-0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.192+0.j   ],\\n\",\r\n       \"       [ 0.192+0.j   ],\\n\",\r\n       \"       [ 0.192-0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.496+0.j   ],\\n\",\r\n       \"       [ 0.111+0.j   ],\\n\",\r\n       \"       [ 0.111+0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.041-0.07j ],\\n\",\r\n       \"       [-0.056+0.096j],\\n\",\r\n       \"       [-0.056+0.096j],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.041+0.07j ],\\n\",\r\n       \"       [-0.056-0.096j],\\n\",\r\n       \"       [-0.056-0.096j],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.496+0.j   ],\\n\",\r\n       \"       [ 0.111-0.j   ],\\n\",\r\n       \"       [ 0.111+0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.041+0.07j ],\\n\",\r\n       \"       [-0.056-0.096j],\\n\",\r\n       \"       [-0.056-0.096j],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.041-0.07j ],\\n\",\r\n       \"       [-0.056+0.096j],\\n\",\r\n       \"       [-0.056+0.096j],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ],\\n\",\r\n       \"       [ 0.   +0.j   ]])\"\r\n      ]\r\n     },\r\n     \"execution_count\": 154,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"execution_count\": 154\r\n  }\r\n ],\r\n \"metadata\": {\r\n  \"kernelspec\": {\r\n   \"display_name\": \"Python 3\",\r\n   \"language\": \"python\",\r\n   \"name\": \"python3\"\r\n  },\r\n  \"language_info\": {\r\n   \"codemirror_mode\": {\r\n    \"name\": \"ipython\",\r\n    \"version\": 2\r\n   },\r\n   \"file_extension\": \".py\",\r\n   \"mimetype\": \"text/x-python\",\r\n   \"name\": \"python\",\r\n   \"nbconvert_exporter\": \"python\",\r\n   \"pygments_lexer\": \"ipython2\",\r\n   \"version\": \"2.7.6\"\r\n  }\r\n },\r\n \"nbformat\": 4,\r\n \"nbformat_minor\": 5\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cartan_decomposition.ipynb b/cartan_decomposition.ipynb
+--- a/cartan_decomposition.ipynb	(revision 9fd79cfb79609be6a24ae7e515acb0bc1fcdc835)
++++ b/cartan_decomposition.ipynb	(date 1732040480345)
+@@ -6,738 +6,59 @@
+    "metadata": {
+     "collapsed": true,
+     "ExecuteTime": {
+-     "end_time": "2024-11-19T11:37:40.146589Z",
+-     "start_time": "2024-11-19T11:37:39.893786Z"
++     "end_time": "2024-11-19T10:34:04.199716Z",
++     "start_time": "2024-11-19T10:34:03.870894Z"
+     }
+    },
+-   "source": [
+-    "import numpy as np\n",
+-    "from sympy.strategies.branch import identity"
+-   ],
++   "source": "import numpy as np",
+    "outputs": [],
+    "execution_count": 1
+   },
+   {
+    "metadata": {
+     "ExecuteTime": {
+-     "end_time": "2024-11-19T11:38:27.158842Z",
+-     "start_time": "2024-11-19T11:38:27.142044Z"
++     "end_time": "2024-11-19T11:07:01.074381Z",
++     "start_time": "2024-11-19T11:07:01.067384Z"
+     }
+    },
+    "cell_type": "code",
+-   "source": [
+-    "zero_qubit = np.array([[1],[0]])\n",
+-    "one_qubit = np.array([[0],[1]])"
+-   ],
+-   "id": "e1e26966409093fb",
++   "source": "zero = np.array([[1], [0]])",
++   "id": "d18efd9d5d1a0ffc",
+    "outputs": [],
+    "execution_count": 2
+   },
+   {
+    "metadata": {
+     "ExecuteTime": {
+-     "end_time": "2024-11-19T11:54:19.974513Z",
+-     "start_time": "2024-11-19T11:54:19.959418Z"
++     "end_time": "2024-11-19T11:07:06.543629Z",
++     "start_time": "2024-11-19T11:07:06.523641Z"
+     }
+    },
+    "cell_type": "code",
+-   "source": [
+-    "qubity = [zero_qubit, one_qubit]\n",
+-    "\n",
+-    "baza = [np.kron(qubity[0], qubity[0]), np.kron(qubity[0], qubity[1]), np.kron(qubity[1], qubity[0])]"
+-   ],
+-   "id": "afd2e9cc1d093d7a",
+-   "outputs": [],
+-   "execution_count": 29
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T14:35:45.422842Z",
+-     "start_time": "2024-11-19T14:35:45.392660Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "baza[0]",
+-   "id": "9912298df2bc0455",
++   "source": "zero",
++   "id": "174528d5fc738506",
+    "outputs": [
+     {
+      "data": {
+       "text/plain": [
+        "array([[1],\n",
+-       "       [0],\n",
+-       "       [0],\n",
+        "       [0]])"
+       ]
+      },
+-     "execution_count": 145,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 145
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T13:40:43.450314Z",
+-     "start_time": "2024-11-19T13:40:43.434628Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "np.kron(np.kron(baza[0], baza[1]), baza[2]).shape",
+-   "id": "901b883ad7eb2733",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "(64, 1)"
+-      ]
+-     },
+-     "execution_count": 108,
++     "execution_count": 3,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+    ],
+-   "execution_count": 108
++   "execution_count": 3
+   },
+   {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T11:57:30.007547Z",
+-     "start_time": "2024-11-19T11:57:29.991628Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": [
+-    "stan0x0 = np.kron(baza[0], baza[0].conj().T)\n",
+-    "stan1x1 = np.kron(baza[1], baza[1].conj().T)\n",
+-    "stan2x2 = np.kron(baza[2], baza[2].conj().T)"
+-   ],
+-   "id": "22d20f16c9f5539b",
+-   "outputs": [],
+-   "execution_count": 36
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T11:58:16.929471Z",
+-     "start_time": "2024-11-19T11:58:16.924311Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "stan2x2",
+-   "id": "20ae2cf7367b909c",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "array([[0, 0, 0, 0],\n",
+-       "       [0, 0, 0, 0],\n",
+-       "       [0, 0, 1, 0],\n",
+-       "       [0, 0, 0, 0]])"
+-      ]
+-     },
+-     "execution_count": 39,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 39
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:03:25.135209Z",
+-     "start_time": "2024-11-19T12:03:25.119240Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": [
+-    "import qiskit.circuit.library as lib\n",
+-    "from qiskit.quantum_info import Operator"
+-   ],
+-   "id": "a484591c5f6aada4",
+-   "outputs": [],
+-   "execution_count": 42
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:09:38.386600Z",
+-     "start_time": "2024-11-19T12:09:38.375355Z"
+-    }
+-   },
++   "metadata": {},
+    "cell_type": "code",
+-   "source": [
+-    "Z = Operator(lib.ZGate())\n",
+-    "X = Operator(lib.XGate())\n",
+-    "\n",
+-    "def Ry(theta):\n",
+-    "    return Operator(lib.RYGate(theta))\n",
+-    "\n",
+-    "def P(theta):\n",
+-    "    return Operator(lib.PhaseGate(theta))"
+-   ],
+-   "id": "19626e09a12fc18d",
+    "outputs": [],
+-   "execution_count": 53
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:11:31.596716Z",
+-     "start_time": "2024-11-19T12:11:31.582839Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": [
+-    "from numpy.linalg import multi_dot\n",
+-    "\n",
+-    "u1 = multi_dot([X, Ry(np.arctan(1 + np.sqrt(3))), Z, P(np.pi * 3 / 16), X, P(np.pi * 15 / 16)])\n",
+-    "u2 = u1\n",
+-    "v1 = multi_dot([X, P(np.pi * 3 / 16), X, P(np.pi * 15 / 16), X, Ry(np.arctan(1 + np.sqrt(3))), Z, X])\n",
+-    "v2 = multi_dot([X, Z, X, P(np.pi * 9 / 16), X, P(np.pi * 13 / 16), X, Z, Ry(np.arctan(1 + np.sqrt(3)))])"
+-   ],
+-   "id": "1884bf2a2201e2b1",
+-   "outputs": [],
+-   "execution_count": 56
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:13:17.486565Z",
+-     "start_time": "2024-11-19T12:13:17.455241Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": [
+-    "pi = np.pi\n",
+-    "sqrt = np.sqrt\n",
+-    "log = np.log\n",
+-    "\n",
+-    "common_log_term = log(-1 / 6 * (-1) ** (1 / 4) * (sqrt(24 - 6 * sqrt(3)) + 1j * (3 + sqrt(3))))\n",
+-    "common_factor = 3j + 1j * sqrt(3) + sqrt(6 * (4 - sqrt(3)))\n",
+-    "denominator = 15 * pi - 4 * 1j * common_log_term\n",
+-    "\n",
+-    "VCx = np.array([\n",
+-    "    [\n",
+-    "        -(((-1) ** (5 / 8) * common_factor * (30 * pi - 8 * 1j * common_log_term)) / (24 * denominator)) +\n",
+-    "        (3 * (-1) ** (5 / 8) * (-30 * pi + 8 * 1j * common_log_term)) / (2 * common_factor * denominator),\n",
+-    "        0,\n",
+-    "        0,\n",
+-    "        (3 * (-1) ** (5 / 8) * (-30 * pi + 8 * 1j * common_log_term)) / (2 * common_factor * denominator) -\n",
+-    "        ((-1) ** (5 / 8) * common_factor * (-30 * pi + 8 * 1j * common_log_term)) / (24 * denominator)\n",
+-    "    ],\n",
+-    "    [\n",
+-    "        0,\n",
+-    "        -(1 / 2) * (-1) ** (1 / 8) - (1 / 2) * (-1) ** (5 / 8),\n",
+-    "        -(1 / 2) * (-1) ** (1 / 8) + (1 / 2) * (-1) ** (5 / 8),\n",
+-    "        0\n",
+-    "    ],\n",
+-    "    [\n",
+-    "        0,\n",
+-    "        -(1 / 2) * (-1) ** (1 / 8) + (1 / 2) * (-1) ** (5 / 8),\n",
+-    "        -(1 / 2) * (-1) ** (1 / 8) - (1 / 2) * (-1) ** (5 / 8),\n",
+-    "        0\n",
+-    "    ],\n",
+-    "    [\n",
+-    "        (3 * (-1) ** (5 / 8) * (-30 * pi + 8 * 1j * common_log_term)) / (2 * common_factor * denominator) -\n",
+-    "        ((-1) ** (5 / 8) * common_factor * (-30 * pi + 8 * 1j * common_log_term)) / (24 * denominator),\n",
+-    "        0,\n",
+-    "        0,\n",
+-    "        -(((-1) ** (5 / 8) * common_factor * (30 * pi - 8 * 1j * common_log_term)) / (24 * denominator)) +\n",
+-    "        (3 * (-1) ** (5 / 8) * (-30 * pi + 8 * 1j * common_log_term)) / (2 * common_factor * denominator)\n",
+-    "    ]\n",
+-    "], dtype=complex)"
+-   ],
+-   "id": "61373f65053a299b",
+-   "outputs": [],
+-   "execution_count": 57
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:15:50.308830Z",
+-     "start_time": "2024-11-19T12:15:50.288353Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "fCheck = multi_dot([np.kron(u1, u2), VCx, np.kron(v1, v2)]).round(5)",
+-   "id": "74b76a1e7d9a75ad",
+-   "outputs": [],
+-   "execution_count": 62
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:15:53.023945Z",
+-     "start_time": "2024-11-19T12:15:52.992410Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "fCheck ",
+-   "id": "c185cc3e4982c1b5",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "array([[ 0.57735-0.j ,  0.57735-0.j ,  0.57735-0.j , -0.     -0.j ],\n",
+-       "       [ 0.57735-0.j , -0.28868+0.5j, -0.28868-0.5j,  0.     -0.j ],\n",
+-       "       [ 0.57735-0.j , -0.28868-0.5j, -0.28868+0.5j,  0.     -0.j ],\n",
+-       "       [-0.     -0.j ,  0.     -0.j ,  0.     -0.j ,  1.     -0.j ]])"
+-      ]
+-     },
+-     "execution_count": 63,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 63
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:24:54.452280Z",
+-     "start_time": "2024-11-19T12:24:54.436634Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "stanPlusQubity = multi_dot([fCheck, baza[0]])",
+-   "id": "be90502f8a7bbbf8",
+-   "outputs": [],
+-   "execution_count": 69
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:43:50.103930Z",
+-     "start_time": "2024-11-19T12:43:50.089114Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "(stanPlusQubity * np.sqrt(3)).round(3)",
+-   "id": "4508d999c60fb789",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "array([[1.+0.j],\n",
+-       "       [1.+0.j],\n",
+-       "       [1.+0.j],\n",
+-       "       [0.+0.j]])"
+-      ]
+-     },
+-     "execution_count": 76,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 76
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:25:14.561053Z",
+-     "start_time": "2024-11-19T12:25:14.545222Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "stanPlusQudity = np.kron(stanPlusQubity, np.kron(stanPlusQubity, stanPlusQubity))",
+-   "id": "9d9e14292f3984b8",
+-   "outputs": [],
+-   "execution_count": 72
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T12:25:19.158433Z",
+-     "start_time": "2024-11-19T12:25:19.134783Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "stanPlusQudity",
+-   "id": "c9822e460329aa7d",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "array([[0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.19244982+0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j],\n",
+-       "       [0.        +0.j]])"
+-      ]
+-     },
+-     "execution_count": 73,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 73
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T13:23:16.738694Z",
+-     "start_time": "2024-11-19T13:23:16.722772Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "Cz01 = np.kron(stan0x0, fCheck) + np.kron(stan1x1, multi_dot([fCheck, fCheck])) + np.kron(stan2x2, np.identity(4))",
+-   "id": "52a560d6ac967d3d",
+-   "outputs": [],
+-   "execution_count": 88
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T13:23:17.276169Z",
+-     "start_time": "2024-11-19T13:23:17.260194Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "CZ01 = np.kron(Cz01, np.identity(4))",
+-   "id": "c66e84e114740b0c",
+-   "outputs": [],
+-   "execution_count": 89
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T13:23:17.819079Z",
+-     "start_time": "2024-11-19T13:23:17.803347Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "CZ01",
+-   "id": "43f9a133f029d657",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "array([[0.57735+0.j, 0.     +0.j, 0.     +0.j, ..., 0.     +0.j,\n",
+-       "        0.     +0.j, 0.     +0.j],\n",
+-       "       [0.     +0.j, 0.57735+0.j, 0.     +0.j, ..., 0.     +0.j,\n",
+-       "        0.     +0.j, 0.     +0.j],\n",
+-       "       [0.     +0.j, 0.     +0.j, 0.57735+0.j, ..., 0.     +0.j,\n",
+-       "        0.     +0.j, 0.     +0.j],\n",
+-       "       ...,\n",
+-       "       [0.     +0.j, 0.     +0.j, 0.     +0.j, ..., 0.     +0.j,\n",
+-       "        0.     +0.j, 0.     +0.j],\n",
+-       "       [0.     +0.j, 0.     +0.j, 0.     +0.j, ..., 0.     +0.j,\n",
+-       "        0.     +0.j, 0.     +0.j],\n",
+-       "       [0.     +0.j, 0.     +0.j, 0.     +0.j, ..., 0.     +0.j,\n",
+-       "        0.     +0.j, 0.     +0.j]])"
+-      ]
+-     },
+-     "execution_count": 90,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 90
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T13:23:23.665833Z",
+-     "start_time": "2024-11-19T13:23:23.658238Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "Cz02 = np.kron(np.kron(stan0x0, np.identity(4)), fCheck) + np.kron(np.kron(stan1x1, np.identity(4)), np.identity(4)) + np.kron(np.kron(stan2x2, np.identity(4)), multi_dot([fCheck, fCheck]))",
+-   "id": "8175ea294c4a040c",
+-   "outputs": [],
+-   "execution_count": 91
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T13:23:23.993233Z",
+-     "start_time": "2024-11-19T13:23:23.961714Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "Cz02",
+-   "id": "82cf6d16317575ce",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "array([[ 0.57735+0.j ,  0.57735+0.j ,  0.57735+0.j , ...,  0.     +0.j ,\n",
+-       "         0.     +0.j ,  0.     +0.j ],\n",
+-       "       [ 0.57735+0.j , -0.28868+0.5j, -0.28868-0.5j, ...,  0.     +0.j ,\n",
+-       "         0.     +0.j ,  0.     +0.j ],\n",
+-       "       [ 0.57735+0.j , -0.28868-0.5j, -0.28868+0.5j, ...,  0.     +0.j ,\n",
+-       "         0.     +0.j ,  0.     +0.j ],\n",
+-       "       ...,\n",
+-       "       [ 0.     +0.j ,  0.     +0.j ,  0.     +0.j , ...,  0.     +0.j ,\n",
+-       "         0.     +0.j ,  0.     +0.j ],\n",
+-       "       [ 0.     +0.j ,  0.     +0.j ,  0.     +0.j , ...,  0.     +0.j ,\n",
+-       "         0.     +0.j ,  0.     +0.j ],\n",
+-       "       [ 0.     +0.j ,  0.     +0.j ,  0.     +0.j , ...,  0.     +0.j ,\n",
+-       "         0.     +0.j ,  0.     +0.j ]])"
+-      ]
+-     },
+-     "execution_count": 92,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 92
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T13:23:55.021447Z",
+-     "start_time": "2024-11-19T13:23:55.001815Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "Cz12 = np.kron(np.identity(4), np.kron(stan0x0, np.identity(4)) + np.kron(stan1x1, fCheck) + np.kron(stan2x2, multi_dot([fCheck, fCheck])))",
+-   "id": "aeff0132288b4407",
+-   "outputs": [],
+-   "execution_count": 93
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T13:23:58.159477Z",
+-     "start_time": "2024-11-19T13:23:58.143968Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "Cz12 ",
+-   "id": "e07e1d5c8d87199b",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "array([[1.+0.j, 0.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\n",
+-       "       [0.+0.j, 1.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\n",
+-       "       [0.+0.j, 0.+0.j, 1.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\n",
+-       "       ...,\n",
+-       "       [0.+0.j, 0.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\n",
+-       "       [0.+0.j, 0.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j],\n",
+-       "       [0.+0.j, 0.+0.j, 0.+0.j, ..., 0.+0.j, 0.+0.j, 0.+0.j]])"
+-      ]
+-     },
+-     "execution_count": 94,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 94
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T13:25:25.207511Z",
+-     "start_time": "2024-11-19T13:25:25.176720Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "GHZ = multi_dot([CZ01, Cz02, Cz12, stanPlusQudity])",
+-   "id": "9879a714ab96e58a",
+-   "outputs": [],
+-   "execution_count": 96
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T14:49:45.078920Z",
+-     "start_time": "2024-11-19T14:49:45.058468Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "wspolczynnik_zmiany_bazy = np.kron(np.identity(4), np.kron(fCheck.conj().T, fCheck.conj().T))",
+-   "id": "9f4b86e13189ac8a",
+-   "outputs": [],
+-   "execution_count": 149
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T14:49:45.836870Z",
+-     "start_time": "2024-11-19T14:49:45.827852Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "wspolczynnik_zmiany_bazy.shape",
+-   "id": "9eff9af9b9e57a8e",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "(64, 64)"
+-      ]
+-     },
+-     "execution_count": 150,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 150
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T14:49:46.862503Z",
+-     "start_time": "2024-11-19T14:49:46.838713Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "GHZqubity = multi_dot([wspolczynnik_zmiany_bazy, GHZ])",
+-   "id": "1f0131be7c9b4b0a",
+-   "outputs": [],
+-   "execution_count": 151
+-  },
+-  {
+-   "metadata": {
+-    "ExecuteTime": {
+-     "end_time": "2024-11-19T15:38:14.002322Z",
+-     "start_time": "2024-11-19T15:38:13.987315Z"
+-    }
+-   },
+-   "cell_type": "code",
+-   "source": "GHZqubity.round(3)",
+-   "id": "559139d31caeb5ae",
+-   "outputs": [
+-    {
+-     "data": {
+-      "text/plain": [
+-       "array([[ 0.192+0.j   ],\n",
+-       "       [ 0.192+0.j   ],\n",
+-       "       [ 0.192+0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.333+0.j   ],\n",
+-       "       [-0.   +0.j   ],\n",
+-       "       [-0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.192+0.j   ],\n",
+-       "       [ 0.192+0.j   ],\n",
+-       "       [ 0.192-0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.496+0.j   ],\n",
+-       "       [ 0.111+0.j   ],\n",
+-       "       [ 0.111+0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.041-0.07j ],\n",
+-       "       [-0.056+0.096j],\n",
+-       "       [-0.056+0.096j],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.041+0.07j ],\n",
+-       "       [-0.056-0.096j],\n",
+-       "       [-0.056-0.096j],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.496+0.j   ],\n",
+-       "       [ 0.111-0.j   ],\n",
+-       "       [ 0.111+0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.041+0.07j ],\n",
+-       "       [-0.056-0.096j],\n",
+-       "       [-0.056-0.096j],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.041-0.07j ],\n",
+-       "       [-0.056+0.096j],\n",
+-       "       [-0.056+0.096j],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ],\n",
+-       "       [ 0.   +0.j   ]])"
+-      ]
+-     },
+-     "execution_count": 154,
+-     "metadata": {},
+-     "output_type": "execute_result"
+-    }
+-   ],
+-   "execution_count": 154
++   "execution_count": null,
++   "source": "baza = {'0': }",
++   "id": "d5e4fb8fa9f175ee"
+   }
+  ],
+  "metadata": {

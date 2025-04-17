@@ -1,0 +1,9 @@
+pyproject.toml
+QuditsOnQubits/__init__.py
+QuditsOnQubits/ghz_creator.py
+QuditsOnQubits/main.py
+QuditsOnQubits.egg-info/PKG-INFO
+QuditsOnQubits.egg-info/SOURCES.txt
+QuditsOnQubits.egg-info/dependency_links.txt
+QuditsOnQubits.egg-info/requires.txt
+QuditsOnQubits.egg-info/top_level.txt

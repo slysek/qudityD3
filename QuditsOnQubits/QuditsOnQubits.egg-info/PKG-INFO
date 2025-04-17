@@ -1,0 +1,14 @@
+Metadata-Version: 2.2
+Name: QuditsOnQubits
+Version: 0.0.1
+Summary: Testt  tt
+Author-email: Szymon <test@test.test>
+Project-URL: Homepage, https://github.com/twoj/projekt
+Keywords: quantum,ghz,qiskit
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: qiskit
+Requires-Dist: matplotlib

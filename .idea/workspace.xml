@@ -4,17 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="comparison of ideal GHZ state with states created on the ibm brisbane and torino fakebackends">
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ghz_creator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chshQutrit.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/qudityD3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qudityD3.iml" afterDir="false" />
+    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="Testing and comparing ame43test and ame43matrix">
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/CHSH.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ame_creator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell_operator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/brisbane.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/distrib.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/fidelity.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/torino.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/ame43_paper.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/old_GHZ_algo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GHZstate.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/GHZstate.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qutritGraphState.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/qutritGraphState.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/Example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/Example.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ghz_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ghz_creator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/quditsonqubits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/chshTEST.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/chshTEST.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +61,10 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits/QuditsOnQubits&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -73,7 +79,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-80a6976e5986-7ba1f540c4e9-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-242.22855.78" />
+        <option value="bundled-python-sdk-f2b3473ffc3f-fab4200a9dfa-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-243.25659.44" />
       </set>
     </attachedChunks>
   </component>
@@ -88,6 +94,13 @@
     <MESSAGE value="Final version of ghz state" />
     <MESSAGE value="generation of qutrit graph state and final version of ghz state" />
     <MESSAGE value="comparison of ideal GHZ state with states created on the ibm brisbane and torino fakebackends" />
-    <option name="LAST_COMMIT_MESSAGE" value="comparison of ideal GHZ state with states created on the ibm brisbane and torino fakebackends" />
+    <MESSAGE value="prototype of library and chshTest" />
+    <MESSAGE value="Fixed graph creator in ghz_creator.py and Example.ipynb added" />
+    <MESSAGE value="bell inequality" />
+    <MESSAGE value="Comments added to the chshTEST.ipynb" />
+    <MESSAGE value="More comments" />
+    <MESSAGE value="Fixed" />
+    <MESSAGE value="Testing and comparing ame43test and ame43matrix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing and comparing ame43test and ame43matrix" />
   </component>
 </project>
