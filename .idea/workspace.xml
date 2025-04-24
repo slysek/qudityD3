@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="Testing and comparing ame43test and ame43matrix">
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/CHSH.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ame_creator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell_operator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/brisbane.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/distrib.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/fidelity.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/torino.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/ame43_paper.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/old_GHZ_algo.py" afterDir="false" />
+    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="New rewriten project">
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuditsOnQubits/Example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/Example.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ghz_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ghz_creator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/quditsonqubits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/chshTEST.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/chshTEST.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -101,6 +91,7 @@
     <MESSAGE value="More comments" />
     <MESSAGE value="Fixed" />
     <MESSAGE value="Testing and comparing ame43test and ame43matrix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing and comparing ame43test and ame43matrix" />
+    <MESSAGE value="New rewriten project" />
+    <option name="LAST_COMMIT_MESSAGE" value="New rewriten project" />
   </component>
 </project>
