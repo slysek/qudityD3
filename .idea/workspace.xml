@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="New rewriten project">
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/qudityD3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qudityD3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuditsOnQubits/Example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/Example.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell_operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell_operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -33,12 +35,12 @@
     &quot;assignee&quot;: &quot;slysek&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/slysek/qudityD3.git&quot;,
-    &quot;accountId&quot;: &quot;76e72a72-ae97-4c1d-9a7c-5ce5744608b6&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/slysek/qudityD3.git",
+    "accountId": "10ad2aab-224a-4b83-b561-2856c1f6dfc5"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -54,7 +56,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits/QuditsOnQubits&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -69,7 +71,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-f2b3473ffc3f-fab4200a9dfa-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-243.25659.44" />
+        <option value="bundled-python-sdk-80a6976e5986-7ba1f540c4e9-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-242.22855.78" />
       </set>
     </attachedChunks>
   </component>

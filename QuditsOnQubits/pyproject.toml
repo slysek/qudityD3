@@ -20,6 +20,7 @@ classifiers = [
 dependencies = [
     "qiskit",
     "matplotlib",
+    "qiskit_aer"
 
 ]
 requires-python = ">=3.8"

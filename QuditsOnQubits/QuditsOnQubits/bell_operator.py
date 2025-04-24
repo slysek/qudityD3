@@ -123,15 +123,17 @@ def bell_operator(g: igraph.Graph, circuit: QuantumCircuit):
     sampler = StatevectorSampler()
 
     bell_exp_list = []
-
+    exps_operators = []
     for i, j in zip(ghz_bell_circs, range(len(ghz_bell_circs))):
         job = sampler.run([i], shots = shots)
         data_pub = job.result()[0].data
         counts = data_pub.meas.get_counts()
+        exps_operators.append(str_list_gates[j])
         bell_exp = exp_bell(counts, shots, j)
         bell_exp_list.append(np.real(bell_exp))
 
-
+    print(assignment)
+    print(dict(zip(exps_operators, bell_exp_list)))
     return bell_exp_list, ghz_bell_circs
 
 def to_gates(str):
