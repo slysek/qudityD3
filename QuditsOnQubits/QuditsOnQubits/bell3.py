@@ -6,129 +6,152 @@ from qiskit.primitives import StatevectorSampler
 from qiskit.visualization import plot_histogram
 import numpy as np
 
-def bell_operator(g: igraph.Graph, prep_circ: QuantumCircuit) -> float:
+def bell_operator(g: igraph.Graph, circuit: QuantumCircuit):
+    """
+    Algorytm:
+      1. Znajduje dwa wierzchołki (v1,v2) połączone krawędzią r_{v1,v2} != 0 (mod 3).
+      2. Określa sąsiedztwo v1 (bez v2).
+      3. Przydziela:
+         - v1: obserwable typu XZ^k (k=0..2)
+         - v2: obserwable typu Z^(r_{v1,v2}) X^k (k=0..2)
+         - inni sąsiedzi v1 (poza v2): np. ["Z^r_{v1,i} X^1"]
+         - pozostałe wierzchołki: np. ["Z^1", "X^1"]
+
+    """
+
     d = 3
     N = g.vcount()
 
-    # --- 1. Wszystkie r=1 ---
+
+
     for e in g.es:
         e["r"] = 1
 
-    # --- 2. Wybór v1,v2 ---
-    v1 = v2 = None
+    # KROK A: wybór (v1, v2) - pierwsza krawędź z r != 0.
+    v1, v2 = None, None
     for e in g.es:
-        if e["r"] % d != 0:
-            v1, v2 = e.tuple
+        if (e["r"] % d) != 0:
+            v1, v2 = e.source, e.target
             break
-    nbrs = set(g.neighbors(v1)) - {v1, v2}
 
-    # --- 3. Współczynniki c1[k] (grupa 1) ---
-    r12 = g.es[g.get_eid(v1, v2)]["r"] % d
-    c1 = {0: 1.0}
-    for k in range(1, d):
-        Jk = [j for j in nbrs
-              if g.es[g.get_eid(v1, j)]["r"] % d == (k * r12) % d]
-        c1[k] = 1.0 / (len(Jk) + 1)
+    # KROK B: sąsiedztwo v1 (oprócz v2)
+    neighbors_v1 = set(g.neighbors(v1, mode="all"))
+    if v2 in neighbors_v1:
+        neighbors_v1.remove(v2)
+    if v1 in neighbors_v1:
+        neighbors_v1.remove(v1)
 
-    # --- 4. Współczynniki c2[j] (grupa 2) ---
-    inv_r12 = pow(r12, -1, d)
-    c2 = {}
-    for j in nbrs:
-        r1j = g.es[g.get_eid(v1, j)]["r"] % d
-        kj = (r1j * inv_r12) % d
-        Jk = [m for m in nbrs
-              if g.es[g.get_eid(v1, m)]["r"] % d == (kj * r12) % d]
-        c2[j] = (1 - c1[kj]) / len(Jk)
+    # KROK C: słownik wynikowy: {wierzchołek: [lista_obserwabli]}
+    assignment = { i: [] for i in range(N) }
 
-    # --- 5. Przydział literowych obserwabli ---
-    assignment = {i: [] for i in range(N)}
-    assignment[v1] = [ "X" + "Z"*k       for k in range(d)         ]
-    assignment[v2] = [ "Z"*r12 + "X"*k  for k in range(d)         ]
-    for j in nbrs:
-        r1j = g.es[g.get_eid(v1, j)]["r"] % d
-        assignment[j] = ["Z"*r1j + "X"]
-    rest = set(range(N)) - {v1, v2} - nbrs
-    for i in rest:
-        assignment[i] = ["ZX"]
-
-    # --- 6. Wygeneruj wszystkie obwody pomiarowe i policz <exp> ---
-    combos = list(itertools.product(*assignment.values()))
-    qmap   = [[2*i,2*i+1] for i in range(N)]
-    ghz_circs = []
-    for combo in combos:
-        meas = QuantumCircuit(2*N)
-        for idx, lbl in enumerate(combo):
-            gate = to_gates(lbl); gate.name = lbl
-            meas.append(gate, qmap[idx])
-        qc = prep_circ.copy()
-        qc.append(meas, range(2*N))
-        qc.measure_all()
-        ghz_circs.append(qc)
-
-    sampler = StatevectorSampler()
-    bell_exp = []
-    for circ in ghz_circs:
-        job    = sampler.run([circ], shots=10000)
-        counts = job.result()[0].data.meas.get_counts()
-        bell_exp.append(np.real(exp_bell(counts, 10000, 0)))
-
-    # --- 7. Budujemy wzory (pattern, weight) według eq. (84) ---
-    terms = []
-
-    # grupa 1: G~(1,k)
+    # KROK D: v1 -> XZ^k, k=0..2
+    obs_v1 = []
     for k in range(d):
-        pat = [None]*N
-        # v1, v2
-        pat[v1] = "X" + "Z"*k
-        pat[v2] = "Z"*r12 + "X"*k
-        # sąsiedzi v1
-        for j in nbrs:
-            r1j = g.es[g.get_eid(v1, j)]["r"] % d
-            r2j = g.es[g.get_eid(v2, j)]["r"] % d
-            pat[j] = "Z"*((r1j + k*r2j)%d) + "X"
-        # reszta
-        for x in rest:
-            pat[x] = "ZX"
-        terms.append((tuple(pat), c1[k]))
 
-    # grupa 2: G~(2,j)
-    for j in nbrs:
-        pat = [None]*N
-        # v1, v2, j
-        r1j = g.es[g.get_eid(v1, j)]["r"] % d
-        r2j = g.es[g.get_eid(v2, j)]["r"] % d
-        pat[v1] = "Z"*r1j + "X"
-        pat[v2] = "Z"*((r12+r2j)%d)
-        pat[j]  = "X"
-        # pozostałe sąsiedztwa v1\{j}
-        for m in nbrs - {j}:
-            r1m = g.es[g.get_eid(v1, m)]["r"] % d
-            rjm = g.es[g.get_eid(j, m)]["r"] % d
-            pat[m] = "Z"*((r1m + rjm)%d) + "X"
-        # reszta
-        for x in rest:
-            pat[x] = "ZX"
-        terms.append((tuple(pat), c2[j]))
+        str_v1 = "X"
+        for j in range(k):
+            str_v1 += "Z"
+        obs_v1.append(str_v1)
 
-    # grupa 3: G~(3,k) dla k∈rest
-    for k in rest:
-        pat = [None]*N
-        pat[v1] = "Z"*r12
-        pat[v2] = "Z"*(g.es[g.get_eid(v2, k)]["r"]%d)
-        for m in nbrs:
-            r1m = g.es[g.get_eid(v1, m)]["r"]%d
-            pat[m] = "Z"*r1m
-        pat[k] = "X"
-        for x in rest - {k}:
-            pat[x] = "ZX"
-        terms.append((tuple(pat), 1.0))
+    assignment[v1] = obs_v1
 
-    # --- 8. Zsumuj ---
-    weights = [ sum(w for p,w in terms if p==combo) for combo in combos ]
-    I_bell  = sum(w*e for w,e in zip(weights, bell_exp))
+    # KROK E: v2 -> Z^(r_{v1,v2}) X^k, k=0..2
+    r_v1v2 = g.es[g.get_eid(v1, v2)]["r"] % 3
+    obs_v2 = []
+    for k in range(d):
+        str_v2 = ""
 
-    return I_bell
+        for j in range(r_v1v2):
+            str_v2 += "Z"
 
+        for j2 in range(k):
+            str_v2 += "X"
+
+        obs_v2.append(str_v2)
+
+    assignment[v2] = obs_v2
+
+    # KROK F: inni sąsiedzi v1: "Z^r_{v1,i} X" (jeden operator lub więcej)
+
+    for i in neighbors_v1:
+        r_v1i = g.es[g.get_eid(v1, i)]["r"] % 3
+        str_neighbors = ""
+
+        for j in range(r_v1i):
+            str_neighbors += "Z"
+        str_neighbors += "X"
+
+        assignment[i] = [str_neighbors]
+
+    # KROK G: reszta wierzchołków
+    all_verts = set(range(N))
+    remainder = all_verts - {v1, v2} - neighbors_v1
+
+    circ_reminder_list = []
+    for i in remainder:
+        assignment[i] = ["ZX"]  # dwie obserwable bazowe
+
+
+
+
+    final_circ_list = []
+
+    qutrit_list = [[2 * i, 2 * i + 1] for i in range(N)]
+
+    str_list_gates = []
+
+    for combination in itertools.product(*list(assignment.values())):
+        circ = QuantumCircuit(2*N)
+        for j in range(len(combination)):
+            str_list_gates.append(combination[j])
+            tempcirc = to_gates(combination[j])
+            tempcirc.name = combination[j]
+            circ.append(tempcirc, qutrit_list[j])
+        final_circ_list.append(circ)
+
+    #print(assignment)
+
+    ghz_bell_circs = []
+
+    for i in final_circ_list:
+        tempcirc2 = circuit.copy()
+        tempcirc2.append(i, [k for k in range(2*N)])
+        tempcirc2.measure_all()
+        ghz_bell_circs.append(tempcirc2)
+
+    shots = 10000
+    sampler = StatevectorSampler()
+
+    bell_exp_list = []
+    exps_operators = []
+    for i, j in zip(ghz_bell_circs, range(len(ghz_bell_circs))):
+        job = sampler.run([i], shots = shots)
+        data_pub = job.result()[0].data
+        counts = data_pub.meas.get_counts()
+        exps_operators.append(str_list_gates[j])
+        bell_exp = exp_bell(counts, shots, j)
+        bell_exp_list.append(np.real(bell_exp))
+
+    # print(assignment)
+    # print(dict(zip(exps_operators, bell_exp_list)))
+    operators = ["--".join(str_list_gates[i:i+3]) for i in range(0, len(str_list_gates), 3)]
+    print(dict(zip(operators, bell_exp_list)))
+
+    coeffs = {}
+    r_ref = g.es[g.get_eid(v1, v2)]['r'] % d
+    for k in range(1, d):
+        Jk = [j for j in neighbors_v1 if g.es[g.get_eid(v1, j)]['r'] % d == (k*r_ref) % d]
+        c_val = 1.0/(len(Jk)+1)
+        coeffs[(v1, k)] = c_val
+        for j in Jk:
+            coeffs[(j, k)] = c_val
+
+    print('Współczynniki c_{i,k}:')
+    for (v,k), c in coeffs.items():
+        print(f" c_{{{v},{k}}} = {c:.3f}")
+
+
+    return bell_exp_list, ghz_bell_circs
 
 def to_gates(str):
 

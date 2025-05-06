@@ -132,8 +132,12 @@ def bell_operator(g: igraph.Graph, circuit: QuantumCircuit):
         bell_exp = exp_bell(counts, shots, j)
         bell_exp_list.append(np.real(bell_exp))
 
-    print(assignment)
-    print(dict(zip(exps_operators, bell_exp_list)))
+    # print(assignment)
+    # print(dict(zip(exps_operators, bell_exp_list)))
+    operators = ["--".join(str_list_gates[i:i+N]) for i in range(0, len(str_list_gates), N)]
+    print(dict(zip(operators, bell_exp_list)))
+
+
     return bell_exp_list, ghz_bell_circs
 
 def to_gates(str):
