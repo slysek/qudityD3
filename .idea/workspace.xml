@@ -5,19 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="New rewriten project">
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/GHZsim.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bellOperNew.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/ame43sim.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/qudityD3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qudityD3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_04_2025_10_16_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_04_2025_10_16__Changes_1.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/fixingStabilizators.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/spotkanie.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/testFgates.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/workingAME43testingStabilizers.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/Example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/Example.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/GHZame43BELL.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/GHZame43BELL.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell2.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell3.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell_operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bell_operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/Fgate.qpy" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/Fgate.qpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/GHZame43BELL.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/GHZsim.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ame_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ame_creator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bellOperNew.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/bellOperNew.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/compare_distrib.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/compare_distrib.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ex2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/ex2.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/ame43_paper.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/ame43_paper.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/ame43sim.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/ame43sim.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/chshTEST.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/chshTEST.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/test.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/tworzenieXiZ.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/tworzenieXiZ.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chsh.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/chsh.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,25 +56,26 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2noXUgUP10SvTXq4SvXhEhiCCZ0" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits/QuditsOnQubits&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits/QuditsOnQubits",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\szymon\DataspellProjects\qudityD3\QuditsOnQubits" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\szymon\DataspellProjects\qudityD3\QuditsOnQubits" />
       <recent name="C:\Users\szymon\DataspellProjects\qudityD3" />
       <recent name="C:\Users\szymon\DataspellProjects\qudityD3\QuditsOnQubits\QuditsOnQubits" />
     </key>
@@ -77,11 +83,21 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-f2b3473ffc3f-fab4200a9dfa-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-243.25659.44" />
+        <option value="bundled-python-sdk-47c6639f9d67-99d813433b97-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-251.25410.158" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="New rewriten project" />
+      <created>1749463448107</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749463448107</updated>
+    </task>
+    <servers />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Solovat-Kitaev algo" />
     <MESSAGE value="Matrix F on quantum circuit using cartan decomposition" />

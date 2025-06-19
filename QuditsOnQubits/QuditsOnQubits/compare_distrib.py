@@ -29,7 +29,7 @@ def compare_distrb(circ):
     countsTorino = pub_resultTorino.data.meas.get_counts()
 
     keys = np.array(list(d.keys()))
-    vals = np.array(list(d.values())) * 1000
+    vals = np.array(list(d.values())) * 100
 
     keysBris = list(countsBris.keys())
     valsBris = list(countsBris.values())
