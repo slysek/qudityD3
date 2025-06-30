@@ -4,25 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="New rewriten project">
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/fixingStabilizators.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/spotkanie.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/testFgates.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/workingAME43testingStabilizers.ipynb" afterDir="false" />
+    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/2qudits.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/2qudits_measurement.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/real_measurements_IBM.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/Fgate.qpy" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/Fgate.qpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/GHZame43BELL.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/GHZsim.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ame_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ame_creator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/bellOperNew.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/bellOperNew.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/compare_distrib.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/compare_distrib.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/ex2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/ex2.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/ame43_paper.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/ame43_paper.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/ame43sim.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/ame43sim.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/chshTEST.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/chshTEST.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/test.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/tworzenieXiZ.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/tworzenieXiZ.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chsh.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/chsh.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,16 +46,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits/QuditsOnQubits",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits/QuditsOnQubits&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\szymon\DataspellProjects\qudityD3\QuditsOnQubits" />
@@ -116,6 +102,7 @@
     <MESSAGE value="Fixed" />
     <MESSAGE value="Testing and comparing ame43test and ame43matrix" />
     <MESSAGE value="New rewriten project" />
-    <option name="LAST_COMMIT_MESSAGE" value="New rewriten project" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
