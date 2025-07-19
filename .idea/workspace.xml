@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/2qudits.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/2qudits_measurement.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/real_measurements_IBM.ipynb" afterDir="false" />
+    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="working stabilizators">
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/2qutrit_Bmax.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/ai_ghz_transpilation.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/ai_transpilation.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/monitor_jobs.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/2qudits_measurement.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/2qudits_measurement.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/QuditsOnQubits/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/real_measurements_IBM.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/real_measurements_IBM.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +57,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits/QuditsOnQubits&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -103,6 +107,7 @@
     <MESSAGE value="Testing and comparing ame43test and ame43matrix" />
     <MESSAGE value="New rewriten project" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="working stabilizators" />
+    <option name="LAST_COMMIT_MESSAGE" value="working stabilizators" />
   </component>
 </project>
