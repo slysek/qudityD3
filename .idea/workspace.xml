@@ -1,15 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AIAssistantCustomInstructionsStorage">
+    <option name="instructions">
+      <map>
+        <entry key="AIAssistant.General.ProjectPrompt">
+          <value>
+            <AIAssistantStoredInstruction>
+              <option name="actionId" value="AIAssistant.General.ProjectPrompt" />
+              <option name="content" value="Uzywaj dokumentacji bibliotek dla wersji takich jakie sa w requirements.txt, najbardziej mi chodzi oto abys uzywaj najnowszej dokumentacji qiskit 2.1.1, poniewaz rozni sie ona bardzo od poprzednich wersji" />
+            </AIAssistantStoredInstruction>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="working stabilizators">
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/fourier_4lvl.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/QuditsOnQubits/recznie_dwa_qutryty.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/qudityD3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qudityD3.iml" afterDir="false" />
+    <list default="true" id="7c5ba921-b384-478a-8d8e-f18c3237ef94" name="Changes" comment="lib work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/2qudits.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/2qudits_measurement.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/CHSH.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/Example.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/ai_transpilation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/QuditsOnQubits/ai_ame43_transpilation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/ame43_paper.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/ame43sim.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/bellOperNew.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/chshTEST.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/ck_algo.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/daggerZgate.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/ex2.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/fixingStabilizators.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/old_GHZ_algo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/old_ame43_create.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/recznie_dwa_qutryty.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/testFgates.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/tworzenieXiZ.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuditsOnQubits/workingAME43testingStabilizers.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chsh.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekompozycjaKartana.nb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dekompozycjaKartanaV2.nb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nowabaza.nb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obliczanie_reczne.nb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +71,12 @@
     &quot;assignee&quot;: &quot;slysek&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/slysek/qudityD3.git",
-    "accountId": "10ad2aab-224a-4b83-b561-2856c1f6dfc5"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/slysek/qudityD3.git&quot;,
+    &quot;accountId&quot;: &quot;10ad2aab-224a-4b83-b561-2856c1f6dfc5&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -47,16 +85,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits/QuditsOnQubits&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/szymon/DataspellProjects/qudityD3/QuditsOnQubits/QuditsOnQubits",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "ml.llm.AIAssistantPromptsLibrary"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\szymon\DataspellProjects\qudityD3\QuditsOnQubits" />
@@ -105,6 +144,7 @@
     <MESSAGE value="New rewriten project" />
     <MESSAGE value="update" />
     <MESSAGE value="working stabilizators" />
-    <option name="LAST_COMMIT_MESSAGE" value="working stabilizators" />
+    <MESSAGE value="lib work" />
+    <option name="LAST_COMMIT_MESSAGE" value="lib work" />
   </component>
 </project>
